@@ -1,11 +1,18 @@
-N
-10.193.71.1-10.193.71.10,10.193.71.150-10.193.71.249,10.193.71.251-10.193.71.255
-
-LAN AZ2
-10.193.71.1-10.193.71.229,10.193.71.240-10.193.71.255
-
-LAN AZ3
-10.193.71.1-10.193.71.239,10.193.71.250-10.193.71.255
-
-Healthwatch
-10.193.71.1-10.193.71.200,10.193.71.230-10.193.71.255
+Navigate to https://network.pivotal.io/products/ops-manager#/releases/37265
+Download the following file "Pivotal Cloud Foundry Ops Manager YAML for AWS - 2.0-build.249"
+Open the file in a text editor and retrieve the AMI id for the us-east-1 region "us-east-1: ami-b48eb3ce"
+Backup the installation settings - https://opsman.pre.ptlapps.com/export and save the resulting installation.zip
+Record current operations manager ec2 instance settings Disk size
+Launch the new ami with settings from old (New ip is fine as we are using the ELB)
+Export the installation settings from opsman (https://opsman.pre.ptlapps.com/export)
+Shutdown old OpsMan
+Attach new opsman to ELB
+Launch opsman web url in browser > Choose import existing installation > Choose the installation.zip from export step> Enter Decryption passphare
+Download Upgraded software versions of PAS/ERT (Executed as root on aue1lxjmp001ptl)
+om-linux --skip-ssl-validation --username "admin" --password 'REDACTED' --target "https://opsman.pre.ptlapps.com" upload-product -p cf-2.0.4-build.1.pivotal
+om-linux --skip-ssl-validation --username "admin" --password 'REDACTED' --target "https://opsman.pre.ptlapps.com" upload-product -p ~/p-isolation-segment-2.0.3-build.3.external.pivotal
+Open Opsman console and perform the following actions
+click plus sign next to pivotal application service on left pane
+click pivotal application service tile and configure credhub (Internal Mysql > Create credentials for encryption used encryption/admin password> Secure Service crredentials)
+Click pcf isolation segment (external) and upload new stem cells (3445.16 ubuntu-trusty)
+Apply Changes
