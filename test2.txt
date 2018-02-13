@@ -20,7 +20,11 @@ Apply Changes
 
 take a change
 
+<<<<<<< HEAD
 
 
 
 take a change
+=======
+change
+>>>>>>> 3eb5f024f9e483333526eb37527e775f51fb1997
