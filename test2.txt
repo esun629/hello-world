@@ -16,3 +16,6 @@ click plus sign next to pivotal application service on left pane
 click pivotal application service tile and configure credhub (Internal Mysql > Create credentials for encryption used encryption/admin password> Secure Service crredentials)
 Click pcf isolation segment (external) and upload new stem cells (3445.16 ubuntu-trusty)
 Apply Changes
+
+
+take a change
